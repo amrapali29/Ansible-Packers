@@ -1,0 +1,22 @@
+- hosts: webserver
+
+  sudo: yes
+
+  tasks:
+
+    - name: 1. install Apache
+
+      apt: name=apache2 update_cache=yes state=latest
+
+
+    - name: 2. start Apache
+
+      service: name=apache2 state=running enabled=yes
+
+
+    - name: 3. install Hello World     
+
+      copy: src=/etc/ansible/hello.html dest=/var/www/html/hello.html mode=0664
+
+
+	
