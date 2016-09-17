@@ -1,0 +1,16 @@
+- name: Create AWS instance
+  hosts: localhost
+  connection: local
+  gather_facts: False
+  tasks:
+
+  - name: create an EC2 instance
+    local_action:
+      module: ec2
+      key_name: ansible
+      region: us-west-2
+      group_id: sg-6e18d717
+      instance_type: t2.micro
+      image: ami-f503d195
+      wait: yes
+    register: basic_ec2
